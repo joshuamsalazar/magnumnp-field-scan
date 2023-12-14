@@ -32,8 +32,8 @@ To run a new simulation, you need to copy the scripts from this repository into 
 
 - After cloning the scripts, you can run your simulation, modifying the `m2.py` as usual within the directory.
 - The repository contains the following essential scripts:
-  -g* files for plotting with `gnuplot`.
-  -x* files as `bash` scripts.
+  - g* files for plotting with `gnuplot`.
+  - x* files as `bash` scripts.
 
 ### Keeping Your Scripts Updated
 
