@@ -12,17 +12,8 @@ To run a new simulation, you need to copy the scripts from this repository into 
 
 ### Cloning the Repository
 
-1. **Create a New Directory for Your Simulation:**
-   - Open a terminal.
-   - Navigate to where you want to create your new simulation directory.
-   - Create a new directory and navigate into it:
-     ```bash
-     mkdir my-new-simulation
-     cd my-new-simulation
-     ```
-
-2. **Clone the Repository:**
-   - Now clone the MagnumNP Field Scan repository into your simulation directory:
+ **Pull the scripts from the repo:**
+   - Clone the MagnumNP Field Scan repository into your simulation directory:
      ```bash
      git clone https://github.com/joshuamsalazar/magnumnp-field-scan.git .
      ```
