@@ -1,7 +1,4 @@
-# magnumnp-field-scan
-Startup scripts to simulate field scans with magnumnp
-
-# MagnumNP Field Scan Repository
+# MagnumNP Field Scan init-scripts
 
 Welcome to the MagnumNP Field Scan repository! This repository contains essential scripts for running simulations using the MagnumNP simulation framework. 
 
@@ -11,7 +8,7 @@ To run a new simulation, you need to copy the scripts from this repository into 
 
 ### Prerequisites
 
-- Make sure you have Git installed on your system. If you don't have Git installed, you can download it from [Git's official website](https://git-scm.com/).
+- Make sure you have magnumnp on your system. If you don't, you can download it from [magnumNP repo](https://pypi.org/project/magnumnp/).
 
 ### Cloning the Repository
 
@@ -33,8 +30,10 @@ To run a new simulation, you need to copy the scripts from this repository into 
 
 ### Running the Simulation
 
-- After cloning the scripts, you can run your simulations as usual within the directory.
-- The repository contains the following essential scripts: (Here, list the scripts and their purposes briefly)
+- After cloning the scripts, you can run your simulation, modifying the `m2.py` as usual within the directory.
+- The repository contains the following essential scripts:
+  -g* files for plotting with `gnuplot`.
+  -x* files as `bash` scripts.
 
 ### Keeping Your Scripts Updated
 
