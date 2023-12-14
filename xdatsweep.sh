@@ -29,5 +29,5 @@ done
 # Sort the output file
 sort -n -k1 output.dat -o datsweep.dat
 
-gnuplot gbzsweep.gp
+gnuplot gbsweep.gp
 
