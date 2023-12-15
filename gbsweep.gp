@@ -11,13 +11,11 @@ set key bottom right
 set terminal png
 
 # Infinite loop to keep updating the plot
-#while (1) {
-    set output "plt_bsweep.png"
+while (1) {
+    set output folder."plt_bsweep.png"
     plot "datsweep.dat" u 1:5 w l lw 2title "m_z signal (full mm: magnumnp)", \
 	 "1dmin_bxsweep_M2_1nm.dat" u 1:2 w p lw 2 title "m_z signal (single spin: PDE)", \
 	 "expt_bxsweep_M2_1nm.dat" u 1:2 w p lw 2 title "m_z signal (expt.)"
 set terminal x11 
-    plot "datsweep.dat" u 1:5 w l lw 2title "m_z signal (full mm: magnumnp)", \
-	 "1dmin_bxsweep_M2_1nm.dat" u 1:2 w p lw 2 title "m_z signal (single spin: PDE)", \
-	 "expt_bxsweep_M2_1nm.dat" u 1:2 w p lw 2 title "m_z signal (expt.)"
+replot
 pause -1
