@@ -8,7 +8,7 @@ To run a new simulation, you need to copy the scripts from this repository into 
 
 ### Prerequisites
 
-- Make sure you have magnumnp on your system. If you don't, you can download it from [magnumNP repo](https://pypi.org/project/magnumnp/).
+Make sure you have magnumnp on your system. If you don't, you can download it from [magnumNP repo](https://pypi.org/project/magnumnp/).
 
 ### Cloning the Repository
 
@@ -17,14 +17,19 @@ To run a new simulation, you need to copy the scripts from this repository into 
      ```bash
      git clone https://github.com/joshuamsalazar/magnumnp-field-scan.git .
      ```
-   - The `.` at the end of the command clones the repository into the current directory.
-
-### Running the Simulation
-
-- After cloning the scripts, you can run your simulation, modifying the `m2.py` as usual within the directory.
-- The repository contains the following essential scripts:
+After cloning the scripts, you can run your simulation, modifying the `m2.py` as usual within the directory.
+The repository contains the following essential scripts:
   - g* files for plotting with `gnuplot`.
   - x* files as `bash` scripts.
+  
+### Helper scripts included:
+
+#### Plotter: `xplot.sh`
+Shows a desired plot 
+#### Sweeper: `xsweep.sh`
+
+#### Updater: `xdatsweep.sh`
+
 
 ### Keeping Your Scripts Updated
 
