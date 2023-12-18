@@ -4,45 +4,47 @@ Welcome to the MagnumNP Field Scan repository! This repository contains some use
 
 ## Getting Started
 
-To run a new simulation, you need to copy the scripts from this repository into your new simulation directory. Here's a step-by-step guide to doing so.
+To run a new simulation, you need to copy the scripts from this repository into your new simulation directory.
 
-### Prerequisites
+#### Prerequisites
 
 Make sure you have magnumnp on your system. If you don't, you can download it from [magnumNP repo](https://pypi.org/project/magnumnp/).
+Clone this repository into your current directory:
+```bash
+git clone https://github.com/joshuamsalazar/magnumnp-field-scan.git .
+```
 
-### Cloning the Repository
-
- **Pull the scripts from the repo:**
-   - Clone the MagnumNP Field Scan repository into your simulation directory:
-     ```bash
-     git clone https://github.com/joshuamsalazar/magnumnp-field-scan.git .
-     ```
+## My personal workflow
+The way I run simulations here is: 
+ - Pulling the code from the repo.
+ - Set up the structure geometry inside `m2.py` and material parameters.
+ - Run a sample simulation with $H_\text{ext}=0 \text{ mT}$:  `$ python3 m2.py 0`.
+ - Check the generated .vti file and data to see if it agrees with the desired structure.
+ - Run simulation in series for every external field amplitude: `$ ./xsweep.sh m2.py -10 10 1`
+ - Generate the dataset with the results, `datsweep.dat`, by calling `$ ./xdatsweep` at any time.
   
-### Helper scripts included:
+## Helper scripts included:
 The repository contains the following essential scripts:
   - g* files for plotting with `gnuplot`.
   - x* files as `bash` scripts.
 
-#### Plotter: `xplot.sh`
-Generates and shows desired plot (SOT fields, Hext, or magnetization).
-#### Sweeper: `xsweep.sh`
+### Sweeper: `xsweep.sh`
 Runs simulations in series, changing the external field amplitude per simulation. Example usage: This command runs the m2.py file, variying the field amplitude from -10 mT to 10 mT. 
 ```bash
 ./xsweep m2.py -10 10 1 
 ```
-#### Updater: `xdatsweep.sh`
+### Updater: `xdatsweep.sh`
 Reads all the simulations for different field amplitudes and generates a datsweep.dat file with the relaxed magnetization directions at that state. Then, plots the generated dataset
 ```bash
 ./xdatsweep.dat
 ```
+### Plotter: `xplot.sh`
+Generates and shows desired plot (SOT fields, Hext, or magnetization). If you want to see the magnetization state of, the simulation at $H_\text{ext}=3$ mT:
+```bash
+./xplot gmrx.py 3
+```
 
-### My personal workflow
-The way I run simulations here is: 
--Set up the structure geometry inside `m2.py` and material parameters.
--Run a sample simulation with $H_\text{ext}=0 mT$  `$ python3 m2.py 0`.
--Check the generated .vti file and data to see if it agrees with the desired structure.
--Run simulation in series for every external field amplitude: `$ ./xsweep.sh m2.py -10 10 1`
--Generate the dataset with the results, `datsweep.dat`, by calling `$ ./xdatsweep` at any time.
+
 
 ### Keeping Your Scripts Updated
 
