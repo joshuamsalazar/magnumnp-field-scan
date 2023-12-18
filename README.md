@@ -1,6 +1,6 @@
 # MagnumNP Field Scan init-scripts
 
-Welcome to the MagnumNP Field Scan repository! This repository contains essential scripts for running simulations using the MagnumNP simulation framework. 
+Welcome to the MagnumNP Field Scan repository! This repository contains some useful helper scripts for running simulations using the MagnumNP simulation framework. This is my personal setup for running simulations, feel free to branch and improve this code and workflow!
 
 ## Getting Started
 
@@ -17,19 +17,32 @@ Make sure you have magnumnp on your system. If you don't, you can download it fr
      ```bash
      git clone https://github.com/joshuamsalazar/magnumnp-field-scan.git .
      ```
-After cloning the scripts, you can run your simulation, modifying the `m2.py` as usual within the directory.
+  
+### Helper scripts included:
 The repository contains the following essential scripts:
   - g* files for plotting with `gnuplot`.
   - x* files as `bash` scripts.
-  
-### Helper scripts included:
 
 #### Plotter: `xplot.sh`
-Shows a desired plot 
+Generates and shows desired plot (SOT fields, Hext, or magnetization).
 #### Sweeper: `xsweep.sh`
-
+Runs simulations in series, changing the external field amplitude per simulation. Example usage: This command runs the m2.py file, variying the field amplitude from -10 mT to 10 mT. 
+```bash
+./xsweep m2.py -10 10 1 
+```
 #### Updater: `xdatsweep.sh`
+Reads all the simulations for different field amplitudes and generates a datsweep.dat file with the relaxed magnetization directions at that state. Then, plots the generated dataset
+```bash
+./xdatsweep.dat
+```
 
+### My personal workflow
+The way I run simulations here is: 
+-Set up the structure geometry inside `m2.py` and material parameters.
+-Run a sample simulation with $H_\text{ext}=0 mT$  `$ python3 m2.py 0`.
+-Check the generated .vti file and data to see if it agrees with the desired structure.
+-Run simulation in series for every external field amplitude: `$ ./xsweep.sh m2.py -10 10 1`
+-Generate the dataset with the results, `datsweep.dat`, by calling `$ ./xdatsweep` at any time.
 
 ### Keeping Your Scripts Updated
 
