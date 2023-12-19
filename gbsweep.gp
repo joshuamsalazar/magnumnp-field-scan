@@ -19,3 +19,4 @@ while (1) {
 set terminal x11 
 replot
 pause -1
+}

@@ -29,7 +29,7 @@ n = (round(L/dx[0]), round(L/dx[1]), round(1e-9/dx[2]))
 origin = (-x1, -y1, 0)
 #origin = (-x1*n[0]/2, -y1*n[1]/2, 0)
 
-tf = 5e-9
+tf = 10e-9
 eps = 1e-15
 mesh = Mesh(n,dx, origin)
 state = State(mesh, dtype = torch.float32)
@@ -97,7 +97,7 @@ llg = LLGSolver([demag, exchange, torque, aniso, external])
 logger = Logger(f"data_H{int(hampl):04d}", scalars=['t','m',torque.h, external.h],
                 fields_every=500, scalars_every=1,
                 fields=['m',torque.h, external.h])
-write_vti(state.m, "cell.vti") 
+write_vti(state.material, "material.vti") 
 
 if logger.is_resumable():
     print("\t \n \t Logger data files found! ")
