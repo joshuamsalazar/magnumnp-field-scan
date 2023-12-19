@@ -73,7 +73,7 @@ xi = round(n[0]*4/10)
 xf = round(n[0]*6/10)
 state.material["Ms"][xi:xf,:,:,:] = Ms 
 state.material["A"][xi:xf,:,:,:] = A
-state.material["Ku"][xi:xf,:,:,:] = Ku
+state.material["Ku"][xi:xf,:,:,:] = K1
 state.m[xi:xf,:,:,:] = torch.randn(state.m[xi:xf,:,:,:].shape) if random == True else mi
 
 #horizontal stripe
@@ -83,7 +83,7 @@ state.material["Ms"][:,yi:yf,:,:] = Ms
 state.material["p"][:,yi:yf,:,:] = p
 state.material["A"][:,yi:yf,:,:] = A
 state.material["je"][:,yi:yf,:,:] = je
-state.material["Ku"][:,yi:yf,:,:] = Ku
+state.material["Ku"][:,yi:yf,:,:] = K1
 state.m[:,yi:yf,:,:] = torch.randn(state.m[:,yi:yf,:,:].shape) if random == True else mi
 
 state.m.normalize()
@@ -93,14 +93,14 @@ aniso = UniaxialAnisotropyField()
 torque = SpinOrbitTorque()
 demag = DemagField()
 
-Hx = 0.001*hampl/constants.mu_0
-external = ExternalField([Hx, 0, 0])
+Hz = 0.001*hampl/constants.mu_0
+external = ExternalField([0, 0, Hz])
 state.t = 0.
 llg = LLGSolver([demag, exchange, torque, aniso, external])
 logger = Logger(f"data_H{int(hampl):04d}", scalars=['t','m',torque.h, external.h],
                 fields_every=500, scalars_every=1,
                 fields=['m',torque.h, external.h])
-write_vti(state.m, "cell.vti") 
+write_vti(state.material, "material.vti") 
 
 if logger.is_resumable():
     print("\t \n \t Logger data files found! ")
