@@ -18,4 +18,5 @@ while (1) {
 	 "expt_bxsweep_M2_1nm.dat" u 1:2 w p lw 2 title "m_z signal (expt.)"
 set terminal x11 
 replot
-pause -1
+pause 5
+} 
