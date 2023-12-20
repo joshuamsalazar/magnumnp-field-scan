@@ -28,27 +28,28 @@ The repository contains the following essential scripts:
   - g* files for plotting with `gnuplot`.
   - x* files as `bash` scripts.
 
-### Sweeper: `xsweep.sh`
+### [Sweeper: `xsweep.sh`](https://github.com/joshuamsalazar/magnumnp_scripts/tree/main/h_ext-sweeps/xsweep)
 Runs simulations in series, changing the external field amplitude per simulation. Example usage: This command runs the m2.py file, variying the field amplitude from -10 mT to 10 mT. 
 ```bash
 ./xsweep m2.py -10 10 1 
 ```
-### Updater: `xdatsweep.sh`
+### [Updater: `xdatsweep.sh`](https://github.com/joshuamsalazar/magnumnp_scripts/tree/main/h_ext-sweeps/xdatsweep)
 Reads all the simulations for different field amplitudes and generates a datsweep.dat file with the relaxed magnetization directions at that state. Then, plots the generated dataset
 ```bash
 ./xdatsweep.dat
 ```
-### Plotter: `xplot.sh`
+### [Plotter: `xplot.sh`](https://github.com/joshuamsalazar/magnumnp_scripts/tree/main/h_ext-sweeps/xdatsweep/xplot)
 Generates and shows desired plot (SOT fields, Hext, or magnetization). If you want to see the magnetization state of, the simulation at $H_\text{ext}=3$ mT:
 ```bash
 ./xplot gmrx.py 3
 ```
 
 
+### Extra scripts in this [repo](https://github.com/joshuamsalazar/magnumnp_scripts)
 
 ### Keeping Your Scripts Updated
 
-- To ensure you have the latest version of the scripts, you can pull updates from the repository:
+ To ensure you have the latest version of the scripts, you can pull updates from the repository:
   ```bash
   git pull origin main
 
