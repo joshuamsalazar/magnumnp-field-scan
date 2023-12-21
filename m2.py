@@ -54,7 +54,7 @@ A = Aex_T
 state.material = {
     "Ms":  0,
     "A": 0,
-    "Ku": K1,               
+    "Ku": 0,               
     "Ku_axis": [0, 0, 1],
     "gamma": 2.211e5,
     "alpha": 1,
@@ -62,7 +62,7 @@ state.material = {
     "eta_damp": 0.044*1.22,        # both eta with opposite sign as magnum.af, same as magnum.pi
     "p": state.Tensor((0, 0, 0)), #0, 0)), #No current in all structure, just horizontal stripe
     "d": d,
-    "je": je}
+    "je": 0}
 
 mi = state.Tensor([0,1,0])
 state.m = state.Constant([1,0,0])
@@ -73,6 +73,7 @@ xi = round(n[0]*4/10)
 xf = round(n[0]*6/10)
 state.material["Ms"][xi:xf,:,:,:] = Ms 
 state.material["A"][xi:xf,:,:,:] = A
+state.material["Ku"][xi:xf,:,:,:] = K1
 state.m[xi:xf,:,:,:] = torch.randn(state.m[xi:xf,:,:,:].shape) if random == True else mi
 
 #horizontal stripe
@@ -81,6 +82,8 @@ yf = round(n[1]*6/10)
 state.material["Ms"][:,yi:yf,:,:] = Ms 
 state.material["p"][:,yi:yf,:,:] = p
 state.material["A"][:,yi:yf,:,:] = A
+state.material["je"][:,yi:yf,:,:] = je
+state.material["Ku"][:,yi:yf,:,:] = K1
 state.m[:,yi:yf,:,:] = torch.randn(state.m[:,yi:yf,:,:].shape) if random == True else mi
 
 state.m.normalize()
@@ -90,8 +93,8 @@ aniso = UniaxialAnisotropyField()
 torque = SpinOrbitTorque()
 demag = DemagField()
 
-Hx = 0.001*hampl/constants.mu_0
-external = ExternalField([Hx, 0, 0])
+Hz = 0.001*hampl/constants.mu_0
+external = ExternalField([0, 0, Hz])
 state.t = 0.
 llg = LLGSolver([demag, exchange, torque, aniso, external])
 logger = Logger(f"data_H{int(hampl):04d}", scalars=['t','m',torque.h, external.h],
