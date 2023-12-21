@@ -16,12 +16,12 @@ git clone https://github.com/joshuamsalazar/magnumnp-field-scan.git .
 
 ## My personal workflow
 The way I run simulations here is: 
- - Pulling the code from the repo.
+ - Pulling the scripts from the repo.
  - Set up the structure geometry inside `m2.py` and material parameters.
  - Run a sample simulation with $H_\text{ext}=0 \text{ mT}$:  `$ python3 m2.py 0`.
  - Check the generated .vti file and data to see if it agrees with the desired structure.
  - Run simulation in series for every external field amplitude: `$ ./xsweep.sh m2.py -10 10 1`
- - Generate the dataset with the results, `datsweep.dat`, by calling `$ ./xdatsweep` at any time.
+ - Generate the dataset with the results, `datsweep.dat`, by calling `$ ./xdatsweep.sh` at any time.
   
 ## Helper scripts included:
 The repository contains the following essential scripts:
