@@ -1,13 +1,21 @@
 #!/bin/bash
 
-if ! command -v pvpython &> /dev/null; then
-    echo -e "\n Paraview-python-interface 'pvpython' command not found."
-    echo -e "\n Please, provide the full path of the paraview python interface\n" 
-    echo -e "\t Example: /datadisk/programs/paraview_x.x/bin/pvpython \n Your path: "
-    read -p "" pvpython_path
-    # You can now use "$pvpython_path" as the path to the pvpython command
+pvpython_path_file=".local/pvpython_path"
+
+if [ -f "$pvpython_path_file" ]; then
+    pvpython_path=$(cat "$pvpython_path_file")
 else
-    pvpython_path=$(which pvpython)
+    if ! command -v pvpython &> /dev/null; then
+        echo -e "\n Paraview-python-interface 'pvpython' command not found."
+        echo -e "\n Please, provide the full path of the paraview python interface\n" 
+        echo -e "\t Example: /datadisk/programs/paraview_x.x/bin/pvpython \n \t Your path: "
+        read -p "" pvpython_path
+        # Store the path for future use
+        mkdir -p .local
+        echo "$pvpython_path" > "$pvpython_path_file"
+    else
+        pvpython_path=$(which pvpython)
+    fi
 fi
 
 if [ $# -lt 1 ]; then
@@ -21,16 +29,16 @@ hampl=$(printf "%04d" $1)
 file_path="data_H$hampl/m_relaxed.vti"
 
 if [ ! -f "$file_path" ]; then
-    echo "File $file_path not found. Searching for file with highest cnt..."
+    echo -e "\n File $file_path not found. Searching for file with highest cnt..."
 
     # Find the file with the highest cnt value
     highest_cnt_file=$(find . -type f -name "m_relax_H${hampl}_*.vti" | sort -V | tail -n 1)
 
     if [ -n "$highest_cnt_file" ]; then
-        echo "Using file: $highest_cnt_file"
+        echo -e "\n Using file: $highest_cnt_file"
         file_path=$highest_cnt_file
     else
-        echo "No suitable file found."
+        echo -e "\n No suitable file found."
         exit 1
     fi
 fi
