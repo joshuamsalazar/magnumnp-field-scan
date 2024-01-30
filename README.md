@@ -43,6 +43,11 @@ Generates and shows desired plot (SOT fields, Hext, or magnetization). If you wa
 ./xplot gmrx.py 3
 ```
 
+### [Screenshotter `xscreenshot.sh`](https://github.com/joshuamsalazar/magnumnp_scripts/blob/main/paraview/xscreenshot)
+Makes an screenshot from a top-view perspective automatically for every external field amplitude. To generate a figure from the simulation data at $H_{ext}=-3 mT$:
+```bash
+./xscreenshot.sh -3
+```
 
 ### Extra scripts in this [repo](https://github.com/joshuamsalazar/magnumnp_scripts)
 
