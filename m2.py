@@ -12,8 +12,8 @@ torch.cuda.manual_seed_all(42)
 filepath = sys.argv[0]
 
 #Defining the geometry
-L = 10e-6 # 10e-6 #length_cross 
-arm_width = 2e-6 # 2e-6
+L = 10e-8 # 10e-6 #length_cross 
+arm_width = 2e-8 # 2e-6
 
 #Helper coordinates
 x1 = L/2.

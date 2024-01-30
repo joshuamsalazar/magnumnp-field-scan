@@ -2,8 +2,13 @@
 
 # Check if an argument is provided
 if [ $# -eq 0 ]; then
-	echo -e "\t This script is an interface to the gnuplotscripts for each subfolder. To plot your type=(m_relax, sot, hext) use:"
-    echo -e"\t\t: $0 <type> <field_in_mT>"
+	echo -e "\t\n This script is an interface to the gnuplotscripts for each subfolder. To generate your plot choose the template.
+       	Templates avaiable: 	gmrx.gp  -- m vs. t
+				gsot.gp  -- H_sot vs. t
+				ghext.gp -- H_ext vs. t
+				"
+    echo -e "Usage: \t\t $0 <template> <field_in_mT>\n"
+    echo -e "Example: \n $0 gmrx.gp 0  -->> Generates a m vs. t plot for the data at H_ext=-1 mT"
     exit 1
 fi
 

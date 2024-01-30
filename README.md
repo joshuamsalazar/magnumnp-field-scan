@@ -13,8 +13,7 @@ Clone this repository into your current directory:
 ```bash
 git clone https://github.com/joshuamsalazar/magnumnp-field-scan.git .
 ```
-
-## [My personal workflow](https://github.com/joshuamsalazar/magnumnp_scripts/tree/main/h_ext-sweeps/workflow.md)
+## [My personal workflow](https://github.com/joshuamsalazar/magnumnp_scripts/blob/main/h_ext-sweeps/workflow.md)
 The way I run simulations here is: 
  - Pulling the scripts from the repo.
  - Set up the structure geometry inside `m2.py` and material parameters.
